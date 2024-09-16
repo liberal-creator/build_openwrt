@@ -75,7 +75,7 @@ jobs:
         cp -r ./scripts/immortalwrt-23.05/. ./
         /bin/bash 01_prepare_source_code.sh
         ln -sf /builder/openwrt ${GITHUB_WORKSPACE}/openwrt
-        ln -sf /builder/openwrt /home/runner/work/_actions/liberal-creator/openwrt_packit/main/openwrt
+        ln -sf /builder/openwrt /home/runner/work/_actions/liberal-creator/openwrt_packit/master/openwrt
 
     - name: Update & install feeds
       working-directory: ${{ github.workspace }}/openwrt
