@@ -147,9 +147,9 @@ jobs:
         allowUpdates: true
         token: ${{ secrets.GH_TOKEN }}
         body: |
-          This is OpenWrt firmware for Armvirt 64
+          This is OpenWrt firmware for N1-ImmortalWrt
           * Firmware information
-          Default IP: 192.168.1.1
+          Default IP: 192.168.1.3
           Default username: root
           Default password: password
     
