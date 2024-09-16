@@ -128,6 +128,12 @@ jobs:
       run: |
          make -j1 V=s
          
+    - name: Upload firmware directory
+      uses: actions/upload-artifact@main
+      with:
+        name: OpenWrt_rootfs_${{ env.build_date }}
+        path: openwrt/bin
+        
     - name: Package OpenWrt Firmware
       uses: liberal-creator/openwrt_packit@master
       env:
