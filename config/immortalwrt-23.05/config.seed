@@ -24,6 +24,8 @@ CONFIG_PACKAGE_luci-app-daed=y
 ### WIFI ###
 CONFIG_PACKAGE_kmod-mac80211=y
 CONFIG_PACKAGE_wpad=y
+CONFIG_PACKAGE_kmod-brcmfmac=y
+CONFIG_PACKAGE_iw=y
 
 ### PPPOE ###
 CONFIG_PACKAGE_kmod-pppoe=y
