@@ -21,6 +21,13 @@ CONFIG_KERNEL_XDP_SOCKETS=y
 CONFIG_PACKAGE_kmod-xdp-sockets-diag=y
 CONFIG_PACKAGE_luci-app-daed=y
 
+### WIFI ###
+CONFIG_PACKAGE_kmod-mac80211=y
+CONFIG_PACKAGE_wpad=y
+
+### PPPOE ###
+CONFIG_PACKAGE_kmod-pppoe=y
+
 ### BASIC ###
 CONFIG_PACKAGE_htop=y
 CONFIG_PACKAGE_autocore=y
@@ -69,7 +76,7 @@ CONFIG_PACKAGE_coreutils-truncate=y
 CONFIG_PACKAGE_luci-app-amlogic=y
 CONFIG_PACKAGE_luci-app-arpbind=y
 CONFIG_PACKAGE_luci-app-autoreboot=y
-CONFIG_PACKAGE_luci-app-filebrowser=y
+# CONFIG_PACKAGE_luci-app-filebrowser=n
 # CONFIG_PACKAGE_luci-app-filetransfer is not set
 # CONFIG_PACKAGE_luci-app-frpc=n
 CONFIG_PACKAGE_luci-app-hd-idle=y
@@ -79,7 +86,7 @@ CONFIG_PACKAGE_luci-app-mihomo=y
 CONFIG_PACKAGE_luci-app-nlbwmon=y
 CONFIG_PACKAGE_luci-app-opkg=y
 CONFIG_PACKAGE_luci-app-ramfree=y
-CONFIG_PACKAGE_luci-app-samba4=y
+# CONFIG_PACKAGE_luci-app-samba4=n
 CONFIG_PACKAGE_luci-app-ttyd=y
 CONFIG_PACKAGE_luci-app-upnp=y
 # CONFIG_PACKAGE_luci-app-verysync=n
