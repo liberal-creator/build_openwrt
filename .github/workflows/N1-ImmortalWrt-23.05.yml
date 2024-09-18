@@ -144,6 +144,7 @@ jobs:
         KERNEL_AUTO_LATEST: false
         OPENWRT_VER: ${{ env.latest_release }}
         DISTRIB_REVISION: ImmortalWrt
+        DISTRIB_DESCRIPTION: ImmortalWrt
   
     - name: Upload OpenWrt Firmware to Release
       uses: ncipollo/release-action@main
