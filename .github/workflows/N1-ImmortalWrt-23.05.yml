@@ -143,7 +143,6 @@ jobs:
         KERNEL_VERSION_NAME: ${{ env.kernel_version }}
         KERNEL_AUTO_LATEST: false
         OPENWRT_VER: ${{ env.latest_release }}
-        DISTRIB_REVISION: ImmortalWrt
         DISTRIB_DESCRIPTION: ImmortalWrt
   
     - name: Upload OpenWrt Firmware to Release
