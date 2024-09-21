@@ -17,11 +17,11 @@ git clone --depth 1 https://github.com/ophub/luci-app-amlogic.git ./package/luci
 # cp -rf ../patch/cgroupfs-mount/901-fix-cgroupfs-umount.patch ./feeds/packages/utils/cgroupfs-mount/patches/
 # cp -rf ../patch/cgroupfs-mount/902-mount-sys-fs-cgroup-systemd-for-docker-systemd-suppo.patch ./feeds/packages/utils/cgroupfs-mount/patches/
 # Wget
-rm -rf ./feeds/packages/net/wget
-cp -rf ../lede_pkg/net/wget ./feeds/packages/net/wget
+# rm -rf ./feeds/packages/net/wget
+# cp -rf ../lede_pkg/net/wget ./feeds/packages/net/wget
 # golang
-rm -rf ./feeds/packages/lang/golang
-cp -rf ../openwrt_pkg_ma/lang/golang ./feeds/packages/lang/golang
+# rm -rf ./feeds/packages/lang/golang
+# cp -rf ../openwrt_pkg_ma/lang/golang ./feeds/packages/lang/golang
 # mosdns
 rm -rf ./feeds/packages/net/mosdns
 cp -rf ../mosdns/mosdns ./package/mosdns
