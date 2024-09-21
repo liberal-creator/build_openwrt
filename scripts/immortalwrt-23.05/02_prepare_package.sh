@@ -35,24 +35,24 @@ sed -i 's,system,services,g' package/feeds/luci/luci-app-cpufreq/root/usr/share/
 # hd-idle
 sed -i 's,nas,services,g' package/feeds/luci/luci-app-hd-idle/root/usr/share/luci/menu.d/luci-app-hd-idle.json
 # vsftpd
-pushd package/feeds/luci/luci-app-vsftpd
-move_2_services nas
-popd
+# pushd package/feeds/luci/luci-app-vsftpd
+# move_2_services nas
+# popd
 # filebrowser
 # sed -i "s,PKG_VERSION:=.*,PKG_VERSION:=2\.31\.1," package/feeds/packages/filebrowser/Makefile
 # sed -i "s,PKG_HASH:=.*,PKG_HASH:=5917529F03F88AB3128C89C330BD9EABFADC05CF4179887FF3BA04A111888E49," package/feeds/packages/filebrowser/Makefile
 # rclone
 sed -i -e 's,\"nas\",\"services\",g' -e 's,NAS,Services,g' package/feeds/luci/luci-app-rclone/luasrc/controller/rclone.lua
 # dockerman
-pushd package/feeds/luci/luci-app-dockerman
-docker_2_services
-popd
+# pushd package/feeds/luci/luci-app-dockerman
+# docker_2_services
+# popd
 # nlbw
 sed -i 's,services,network,g' package/feeds/luci/luci-app-nlbwmon/root/usr/share/luci/menu.d/luci-app-nlbwmon.json
 # verysync
-pushd package/feeds/luci/luci-app-verysync
-move_2_services nas
-popd
+# pushd package/feeds/luci/luci-app-verysync
+# move_2_services nas
+# popd
 # mihomo
 cp -rf ../mihomo ./package/mihomo
 
