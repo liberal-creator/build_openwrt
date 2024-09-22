@@ -111,7 +111,7 @@ jobs:
       continue-on-error: true
       run: |
         cd openwrt
-        make -j1
+        make -j$(($(nproc) + 1))
 
     - name: If error
       working-directory: ${{ github.workspace }}/openwrt
