@@ -61,9 +61,9 @@ jobs:
         
         echo "build_date=$(date +%Y.%m.%d)" >> ${GITHUB_ENV}
         latest_release="$(curl -s https://github.com/immortalwrt/immortalwrt/tags | grep -Eo "v[0-9\.]+-*r*c*[0-9]*.tar.gz" | sed -n '/24.10/p' | sed -n 1p | sed 's/.tar.gz//g' | sed 's/v//g')"
+        cp -r ./scripts/immortalwrt-24.10/. ./
         /bin/bash 01_prepare_source_code.sh "v${latest_release}"
         kernel_version=$(cat openwrt/include/kernel-6.6 | grep -oE "[1-9]\.[1-9][0-9]*\.[1-9][0-9]*")
-        cp -r ./scripts/immortalwrt-24.10/. ./
         sed -i "s/DATE/${{ env.build_date }}/;s/WRT_SOUR/ImmortalWrt/;s/RELEASES/${latest_release}/" ./openwrt/files/etc/banner
         ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ffuqiangg/amlogic-s9xxx-openwrt/main/openwrt
         echo "latest_release=${latest_release}" >> ${GITHUB_ENV}
