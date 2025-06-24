@@ -3,6 +3,9 @@ CONFIG_TARGET_armsr=y                     # 启用 ARM 通用架构
 CONFIG_TARGET_armsr_armv8=y               # 启用 ARMv8（64位）架构支持
 CONFIG_TARGET_armsr_armv8_DEVICE_generic=y  # 使用通用设备定义（无特定厂牌）
 CONFIG_TARGET_ROOTFS_SQUASHFS=y           # 启用 squashfs 压缩文件系统（建议至少启用一种）
+CONFIG_TARGET_ROOTFS_INITRAMFS=n          # 不生成 initramfs 格式的 root 文件系统（通常用于内存启动或内核调试）
+CONFIG_TARGET_ROOTFS_CPIOGZ=n             # 不生成 gzip 压缩的 CPIO 格式文件系统（常用于特殊启动场景，如 initrd）
+CONFIG_TARGET_ROOTFS_EXT4FS=n             # 不生成 ext4 格式的 root 文件系统镜像（ext4 可读写，常用于虚拟机、SD 卡、U 盘部署）设置为 n 后将不会生成 openwrt-xxx-root.ext4 镜像
 
 ### WIFI（必需组件）###
 CONFIG_PACKAGE_hostapd-common=y           # hostapd 共用组件（用于创建热点）
