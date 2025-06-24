@@ -1,11 +1,13 @@
 ### INITIALIZATION ###
-CONFIG_TARGET_armsr=y                     # 启用 ARM 通用架构
-CONFIG_TARGET_armsr_armv8=y               # 启用 ARMv8（64位）架构支持
-CONFIG_TARGET_armsr_armv8_DEVICE_generic=y  # 使用通用设备定义（无特定厂牌）
-CONFIG_TARGET_ROOTFS_SQUASHFS=y           # 启用 squashfs 压缩文件系统（建议至少启用一种）
-CONFIG_TARGET_ROOTFS_INITRAMFS=n          # 不生成 initramfs 格式的 root 文件系统（通常用于内存启动或内核调试）
-CONFIG_TARGET_ROOTFS_CPIOGZ=n             # 不生成 gzip 压缩的 CPIO 格式文件系统（常用于特殊启动场景，如 initrd）
-CONFIG_TARGET_ROOTFS_EXT4FS=n             # 不生成 ext4 格式的 root 文件系统镜像（ext4 可读写，常用于虚拟机、SD 卡、U 盘部署）设置为 n 后将不会生成 openwrt-xxx-root.ext4 镜像
+CONFIG_TARGET_armsr=y                     # ARM 通用架构
+CONFIG_TARGET_armsr_armv8=y               # ARMv8（64位）架构支持
+CONFIG_TARGET_armsr_armv8_DEVICE_generic=y  # 通用设备定义（无特定厂牌）
+CONFIG_TARGET_ROOTFS_SQUASHFS=y      	  # SquashFS 只读压缩文件系统，常用作固件的根文件系统，节省空间且性能好
+CONFIG_TARGET_ROOTFS_JFFS2=y         	  # JFFS2 作为写入层（overlay），支持可写分区，配合 SquashFS 实现读写分离
+CONFIG_TARGET_ROOTFS_BTRFS=n      		  # Btrfs 作为根文件系统，支持快照、压缩和高级存储管理功能，适合需要高性能和灵活存储的场景
+CONFIG_TARGET_ROOTFS_INITRAMFS=n          # initramfs 格式的 root 文件系统（通常用于内存启动或内核调试）
+CONFIG_TARGET_ROOTFS_CPIOGZ=n             # gzip 压缩的 CPIO 格式文件系统（常用于特殊启动场景，如 initrd）
+CONFIG_TARGET_ROOTFS_EXT4FS=n             # ext4 格式的 root 文件系统镜像（ext4 可读写，常用于虚拟机、SD 卡、U 盘部署）设置为 n 后将不会生成 openwrt-xxx-root.ext4 镜像
 
 ### WIFI（必需组件）###
 CONFIG_PACKAGE_hostapd-common=y           # hostapd 共用组件（用于创建热点）
@@ -40,14 +42,13 @@ CONFIG_PACKAGE_luci-app-homeproxy=y       # 科学上网相关（homeproxy 控�
 CONFIG_PACKAGE_luci-app-opkg=y            # 软件包管理界面
 CONFIG_PACKAGE_luci-app-ramfree=y         # 释放内存工具
 CONFIG_PACKAGE_luci-app-ttyd=y            # 网页终端（TTYD）
-CONFIG_PACKAGE_luci-app-poweroff=y        # 关机
-CONFIG_PACKAGE_poweroff=y                 # 提供 `poweroff` 命令
+CONFIG_PACKAGE_luci-app-poweroffdevice=y  # 关机
 
 
 ### DOCKER（只启用核心组件）###
 CONFIG_PACKAGE_luci-app-dockerman=y       # LuCI Docker 管理界面
-CONFIG_PACKAGE_block-mount=y              # 必需：挂载存储块设备（磁盘/U盘）
-CONFIG_PACKAGE_docker-compose=y           # 启用 docker-compose 工具（可写 yml 运行多个容器）
-CONFIG_DOCKER_CGROUP_OPTIONS=y            # 启用容器资源隔离（Cgroups）
-CONFIG_DOCKER_OPTIONAL_FEATURES=y         # 启用额外功能支持（日志、健康检查等）
-CONFIG_DOCKER_NET_MACVLAN=y               # 支持 macvlan 网络模式（容器独立 IP）
+CONFIG_PACKAGE_block-mount=y              # 挂载存储块设备（磁盘/U盘）
+CONFIG_PACKAGE_docker-compose=y           # docker-compose 工具（可写 yml 运行多个容器）
+CONFIG_DOCKER_CGROUP_OPTIONS=y            # 容器资源隔离（Cgroups）
+CONFIG_DOCKER_OPTIONAL_FEATURES=y         # 额外功能支持（日志、健康检查等）
+CONFIG_DOCKER_NET_MACVLAN=y               # macvlan 网络模式（容器独立 IP）
