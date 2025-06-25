@@ -1,7 +1,8 @@
 ### INITIALIZATION ###
 CONFIG_TARGET_armsr=y                     # ARM 通用架构
 CONFIG_TARGET_armsr_armv8=y               # ARMv8（64位）架构支持
-CONFIG_TARGET_armsr_armv8_DEVICE_generic=y  # 通用设备定义（无特定厂牌）
+# CONFIG_TARGET_armsr_armv8_DEVICE_generic=y  # 通用设备定义（无特定厂牌）
+CONFIG_TARGET_armsr_armv8_DEVICE_aarch64_cortex-a53=y
 
 # ===== 根文件系统配置 =====
 CONFIG_TARGET_ROOTFS_SQUASHFS=y       # 启用 SquashFS 只读压缩根文件系统，节省空间，固件主体
