@@ -65,7 +65,7 @@ jobs:
         /bin/bash 01_prepare_source_code.sh "v${latest_release}"
         kernel_version=$(cat openwrt/include/kernel-6.6 | grep -oE "[1-9]\.[1-9][0-9]*\.[1-9][0-9]*")
         sed -i "s/DATE/${{ env.build_date }}/;s/WRT_SOUR/ImmortalWrt/;s/RELEASES/${latest_release}/" ./files/init/etc/banner
-        ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ffuqiangg/amlogic-s9xxx-openwrt/main/openwrt
+        ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/openwrt
         echo "latest_release=${latest_release}" >> ${GITHUB_ENV}
         echo "kernel_version=${kernel_version}" >> ${GITHUB_ENV}
 
@@ -100,11 +100,11 @@ jobs:
         path: openwrt/bin
 
     - name: Packit firmware
-      uses: ffuqiangg/amlogic-s9xxx-openwrt@main
+      uses: ophub/amlogic-s9xxx-openwrt@main
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        kernel_repo: ffuqiangg/kernel_6.6.y
+        kernel_repo: ophub/kernel
         openwrt_kernel: ${{ env.kernel_version }}
         kernel_usage: stable
         auto_kernel: false
