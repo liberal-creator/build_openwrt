@@ -151,7 +151,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag: ${{ env.build_date }}
+        tag: N1-ImmortalWrt-${{ env.latest_release }}-${{ env.kernel_version }}-${{ env.build_date }}
         allowUpdates: true
         replacesArtifacts: true
         prerelease: ${{ env.prerelease_symbol }}
