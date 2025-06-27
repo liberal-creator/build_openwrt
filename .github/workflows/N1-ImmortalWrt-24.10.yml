@@ -87,7 +87,7 @@ jobs:
         fi
         
         sed -i "s/DATE/${{ env.build_date }}/;s/WRT_SOUR/ImmortalWrt/;s/RELEASES/${latest_release}/" ./files/init/etc/banner
-        ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/openwrt
+        ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ffuqiangg/amlogic-s9xxx-openwrt/main/openwrt
         echo "latest_release=${latest_release}" >> ${GITHUB_ENV}
         echo "kernel_version=${kernel_version}" >> ${GITHUB_ENV}
 
@@ -122,7 +122,7 @@ jobs:
         path: openwrt/bin
 
     - name: Packit firmware
-      uses: ophub/amlogic-s9xxx-openwrt@main
+      uses: ffuqiangg/amlogic-s9xxx-openwrt@main
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
