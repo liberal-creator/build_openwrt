@@ -126,7 +126,7 @@ jobs:
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        kernel_repo: liberal-creator/kernel_6.6.y
+        kernel_repo: ffuqiangg/kernel_6.6.y
         openwrt_kernel: ${{ env.kernel_version }}
         kernel_usage: stable
         auto_kernel: false
