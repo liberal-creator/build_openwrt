@@ -74,7 +74,7 @@ jobs:
           
           latest_release="$(curl -s https://github.com/immortalwrt/immortalwrt/tags | grep -Eo "v[0-9\.]+-*r*c*[0-9]*.tar.gz" | sed -n '/24.10/p' | sed -n 1p | sed 's/.tar.gz//g' | sed 's/v//g')"
         else
-          latest_release = ${{ github.event.inputs.ImmortalWrt_release_version }}
+          latest_release=${{ github.event.inputs.ImmortalWrt_release_version }}
         fi
         cp -r ./scripts/immortalwrt-24.10/. ./
         /bin/bash 01_prepare_source_code.sh "v${latest_release}"
