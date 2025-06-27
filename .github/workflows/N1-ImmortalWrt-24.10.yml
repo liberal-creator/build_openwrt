@@ -2,10 +2,19 @@ name: N1-ImmortalWrt-24.10
 
 on:
   workflow_dispatch:
+    inputs:
+        ImmortalWrt_release_version:
+          description: "Input ImmortalWrt release version"
+          required: true
+          default: "24.10.1"
+        ImmortalWrt_kernel_version:
+          description: "Input ImmortalWrt kernel version"
+          required: true
+          default: "6.6.86"
   repository_dispatch:
     types:
       - N1-ImmortalWrt-24.10
-
+      
 env:
   TZ: Asia/Shanghai
 
@@ -60,10 +69,23 @@ jobs:
         sudo chown -R runner:runner /home/runner/work/build_openwrt
         
         echo "build_date=$(date +%Y.%m.%d)" >> ${GITHUB_ENV}
-        latest_release="$(curl -s https://github.com/immortalwrt/immortalwrt/tags | grep -Eo "v[0-9\.]+-*r*c*[0-9]*.tar.gz" | sed -n '/24.10/p' | sed -n 1p | sed 's/.tar.gz//g' | sed 's/v//g')"
+        if [ -z "${{ github.event.inputs.ImmortalWrt_release_version }}" ]; then
+          echo "ImmortalWrt_release_version is not set"
+          
+          latest_release="$(curl -s https://github.com/immortalwrt/immortalwrt/tags | grep -Eo "v[0-9\.]+-*r*c*[0-9]*.tar.gz" | sed -n '/24.10/p' | sed -n 1p | sed 's/.tar.gz//g' | sed 's/v//g')"
+        else
+          latest_release = ${{ github.event.inputs.ImmortalWrt_release_version }}
+        fi
         cp -r ./scripts/immortalwrt-24.10/. ./
         /bin/bash 01_prepare_source_code.sh "v${latest_release}"
-        kernel_version=$(cat openwrt/include/kernel-6.6 | grep -oE "[1-9]\.[1-9][0-9]*\.[1-9][0-9]*")
+        if [ -z "${{ github.event.inputs.ImmortalWrt_kernel_version }}" ]; then
+          echo "ImmortalWrt_kernel_version is not set"
+          
+          kernel_version=$(cat openwrt/include/kernel-6.6 | grep -oE "[1-9]\.[1-9][0-9]*\.[1-9][0-9]*")
+        else
+          kernel_version=${{ github.event.inputs.ImmortalWrt_kernel_version }}
+        fi
+        
         sed -i "s/DATE/${{ env.build_date }}/;s/WRT_SOUR/ImmortalWrt/;s/RELEASES/${latest_release}/" ./files/init/etc/banner
         ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/openwrt
         echo "latest_release=${latest_release}" >> ${GITHUB_ENV}
