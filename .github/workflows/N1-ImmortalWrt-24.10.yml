@@ -6,11 +6,11 @@ on:
         ImmortalWrt_release_version:
           description: "Input ImmortalWrt release version"
           required: true
-          default: "24.10.1"
+          default: "24.10.2"
         ImmortalWrt_kernel_version:
           description: "Input ImmortalWrt kernel version"
           required: true
-          default: "6.6.86"
+          default: "6.6.93"
   repository_dispatch:
     types:
       - N1-ImmortalWrt-24.10
@@ -122,11 +122,11 @@ jobs:
         path: openwrt/bin
 
     - name: Packit firmware
-      uses: ffuqiangg/amlogic-s9xxx-openwrt@main
+      uses: ophub/amlogic-s9xxx-armbian@main
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        kernel_repo: ffuqiangg/kernel_6.6.y
+        kernel_repo: ophub/kernel
         openwrt_kernel: ${{ env.kernel_version }}
         kernel_usage: stable
         auto_kernel: false
