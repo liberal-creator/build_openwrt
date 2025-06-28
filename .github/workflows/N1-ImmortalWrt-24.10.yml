@@ -87,7 +87,7 @@ jobs:
         fi
         
         sed -i "s/DATE/${{ env.build_date }}/;s/WRT_SOUR/ImmortalWrt/;s/RELEASES/${latest_release}/" ./files/init/etc/banner
-        ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ffuqiangg/amlogic-s9xxx-openwrt/main/openwrt
+        ln -sf /home/runner/work/build_openwrt/build_openwrt/openwrt /home/runner/work/_actions/ophub/amlogic-s9xxx-openwrt/main/openwrt
         echo "latest_release=${latest_release}" >> ${GITHUB_ENV}
         echo "kernel_version=${kernel_version}" >> ${GITHUB_ENV}
 
@@ -128,7 +128,7 @@ jobs:
         openwrt_board: s905d
         kernel_repo: ophub/kernel
         openwrt_kernel: ${{ env.kernel_version }}
-        kernel_usage: stable
+        kernel_usage: flippy
         auto_kernel: false
         openwrt_size: 820
 
