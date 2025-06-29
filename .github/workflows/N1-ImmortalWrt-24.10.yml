@@ -134,9 +134,9 @@ jobs:
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        kernel_repo: 
+        kernel_repo: ${{ github.event.inputs.ImmortalWrt_kernel_repository }}
         openwrt_kernel: ${{ env.kernel_version }}
-        kernel_usage: flippy
+        kernel_usage: stable
         auto_kernel: false
         openwrt_size: 820
 
