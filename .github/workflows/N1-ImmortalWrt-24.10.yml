@@ -11,6 +11,14 @@ on:
           description: "Input ImmortalWrt kernel version"
           required: true
           default: "6.6.93"
+        ImmortalWrt_kernel_repository:
+          description: "Input ImmortalWrt kernel repository"
+          required: true
+          type: choice
+          options:
+            - codesnas
+            - breakingbadboy/OpenWrt
+          default: "breakingbadboy/OpenWrt"
   repository_dispatch:
     types:
       - N1-ImmortalWrt-24.10
@@ -126,7 +134,7 @@ jobs:
       with:
         openwrt_path: openwrt/bin/targets/*/*/*rootfs.tar.gz
         openwrt_board: s905d
-        kernel_repo: ophub/kernel
+        kernel_repo: 
         openwrt_kernel: ${{ env.kernel_version }}
         kernel_usage: flippy
         auto_kernel: false
