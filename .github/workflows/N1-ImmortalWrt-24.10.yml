@@ -16,8 +16,8 @@ on:
           required: true
           type: choice
           options:
-            - codesnas
             - breakingbadboy/OpenWrt
+            - ophub/kernel
           default: "breakingbadboy/OpenWrt"
   repository_dispatch:
     types:
